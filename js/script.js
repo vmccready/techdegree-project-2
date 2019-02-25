@@ -1,6 +1,7 @@
 /******************************************
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
+completed by Vinson McCready
 ******************************************/
    
 // Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
@@ -16,7 +17,9 @@ FSJS project 2 - List Filter and Pagination
    will only be used inside of a function, then it can be locally 
    scoped to that function.
 ***/
-
+const studentList = document.getElementsByTagName('li');
+let currentPage = 1;
+showPage(studentList, 1);
 
 
 
@@ -34,6 +37,16 @@ FSJS project 2 - List Filter and Pagination
        that will be passed into the parens later when you call or 
        "invoke" the function 
 ***/
+
+function showPage(students, currentPage) {
+   for ( i = 0; i < students.length; i += 1) {
+      if (Math.floor(i/10) + 1 === currentPage) {
+         students[i].style.display = '';
+      } else {
+         students[i].style.display = 'none';
+      }
+   }
+}
 
 
 
