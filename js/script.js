@@ -14,6 +14,13 @@ let studentsToShow = studentList;
 let numberOfPages = Math.ceil(studentList.length/studentsPerPage);
 let currentPage = 1;
 
+//no student found message
+const noStudent = document.createElement('h2');
+noStudent.textContent = 'No results have been found.';
+noStudent.className = 'cf';
+noStudent.style.display = 'none' //default to hide
+document.querySelector('div.page').appendChild(noStudent);
+
 //Hides all student list items except the ones we want to show
 function showPage(students, currentPage) {
    //only show students that have been searched
@@ -31,6 +38,11 @@ function showPage(students, currentPage) {
       } else {
          students[i].style.display = 'none'; //hide all others
       }
+   }
+   if(students.length < 1) {
+      noStudent.style.display = '';
+   } else {
+      noStudent.style.display = 'none';
    }
 }
 
